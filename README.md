@@ -9,7 +9,7 @@ this repository keeps the tests for clang-refactor.
 
 in a stable llvm+clang build do
 ```sh
-git clone https://github.com/realincubus/clang-refactor-tests.git {LLVM_ROOT}/tools/clang/tools/extra/unittests/clang-refactor`
+git clone https://github.com/realincubus/clang-refactor-tests.git ${LLVM_ROOT}/tools/clang/tools/extra/unittests/clang-refactor
 ``` 
 
 and add 
@@ -24,8 +24,8 @@ this will register the tests in the llvm+clang testing framework
 ### Run Tests
 
 llvm and clang use llvm-lit to run all tests.
-go to `{LLVM_BUILD_DIR}/tools/clang/tools/extra/test` and run 
+go to `${LLVM_BUILD_DIR}/tools/clang/tools/extra/test/Unit` and run 
 
 ```sh
-llvm-lit .
+llvm-lit . --filter="clang-refactor"
 ```
