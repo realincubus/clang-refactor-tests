@@ -1,0 +1,23 @@
+--- /home/incubus/dev/llvm-clang-3.5/utils/lit/lit/Test.py	2014-06-18 12:55:35.722015477 +0200
++++ Test.py	2014-06-18 12:59:12.934575313 +0200
+@@ -1,4 +1,5 @@
+ import os
++from xml.sax.saxutils import escape
+ 
+ # Test result codes.
+ 
+@@ -194,3 +195,14 @@
+                 return True
+ 
+         return False
++    
++    def getJUnitXML(self):
++        xml = "<testcase classname='" + ".".join(self.path_in_suite)
++        xml += "' name='" + '/'.join(self.path_in_suite) + "'"
++        if self.result.code.isFailure:
++          xml += ">\n\t<failure >\n" + escape(self.result.output) + "\n\t</failure>"
++          xml += "\n</testcase>"
++        else:
++          xml += "/>"
++        return xml
++
