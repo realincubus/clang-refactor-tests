@@ -20,6 +20,8 @@ include_directories(
   ${CommonIncLocation}
   )
 
+
+
 add_extra_unittest( ClangRefactorTests
     UseCompoundAssignOperator.cpp
     UseStdArray.cpp
@@ -27,6 +29,8 @@ add_extra_unittest( ClangRefactorTests
     UseMathConstants.cpp
     UseRAII.cpp
     CollapsibleIfStatement.cpp
+    UseVector.cpp
+    UseUnaryOperator.cpp
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperator.cpp
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperatorMatchers.cpp 
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperatorActions.cpp 
@@ -40,9 +44,6 @@ TARGET_LINK_LIBRARIES( ClangRefactorTests
     clangFrontend
     clangLex
     clangTooling
-    #refactorCore
     refactorApp
-    #gtest
-    #gtest_main
 )
 
