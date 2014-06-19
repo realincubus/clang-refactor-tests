@@ -23,6 +23,7 @@ include_directories(
 add_extra_unittest( ClangRefactorTests
     UseCompoundAssignOperator.cpp
     UseStdArray.cpp
+    UseConst.cpp
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperator.cpp
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperatorMatchers.cpp 
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperatorActions.cpp 
