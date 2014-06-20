@@ -21,7 +21,7 @@ TEST( UseVectorTest, VLAToVector ) {
 	"void fun() {\n"
 	"  int vla_dim = 10;\n"
 	"  double arr[vla_dim];\n"
-        "  arr[10] = 123.45;\n"
+        "  arr[9] = 123.45;\n"
 	"}\n"
     ;
     // the text that i expect to get after the transformation
@@ -29,7 +29,7 @@ TEST( UseVectorTest, VLAToVector ) {
 	"void fun() {\n"
 	"  int vla_dim = 10;\n"
 	"  std::vector<double> arr(vla_dim);\n"
-	"  arr[10] = 123.45;\n"
+	"  arr[9] = 123.45;\n"
 	"}\n"
     ;
     LocalFixture Test(cpp_input,cpp_output);
@@ -42,7 +42,7 @@ TEST( UseVectorTest, ConstExprToVectorNegative ) {
 	"void fun() {\n"
 	"  constexpr int vla_dim = 10;\n"
 	"  double arr[vla_dim];\n"
-        "  arr[10] = 123.45;\n"
+        "  arr[9] = 123.45;\n"
 	"}\n"
     ;
     // constexpr sized arrays should be transformed to array
