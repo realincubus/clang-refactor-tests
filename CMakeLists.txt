@@ -31,6 +31,7 @@ add_extra_unittest( ClangRefactorTests
     CollapsibleIfStatement.cpp
     UseVector.cpp
     UseUnaryOperator.cpp
+    ForLoopStartFromZero.cpp
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperator.cpp
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperatorMatchers.cpp 
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperatorActions.cpp 

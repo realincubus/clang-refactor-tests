@@ -35,22 +35,16 @@ TEST( UseVectorTest, VLAToVector ) {
     LocalFixture Test(cpp_input,cpp_output);
 }
 
-// TODO right now this does not work because clang does not detect
-//      arr to be a incomplete array 
-TEST( UseVectorTest, IncompleteToVector ) {
+
+TEST( UseVectorTest, ConstExprToVectorNegative ) {
     // input for the transformation
     std::string cpp_input = 
 	"void fun() {\n"
-	"  double arr[] = { 0,1,2,3,4,5,6 };\n"
-        "  arr[2] = 123.45;\n"
+	"  constexpr int vla_dim = 10;\n"
+	"  double arr[vla_dim];\n"
+        "  arr[10] = 123.45;\n"
 	"}\n"
     ;
-    // the text that i expect to get after the transformation
-    std::string cpp_output = 
-	"void fun() {\n"
-	"  std::vector<double> arr = { 0,1,2,3,4,5,6 };\n"
-	"  arr[2] = 123.45;\n"
-	"}\n"
-    ;
-    LocalFixture Test(cpp_input,cpp_output);
+    // constexpr sized arrays should be transformed to array
+    LocalFixture Test(cpp_input,cpp_input);
 }
