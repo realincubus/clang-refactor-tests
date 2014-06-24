@@ -33,6 +33,7 @@ add_extra_unittest( ClangRefactorTests
     UseUnaryOperator.cpp
     ForLoopStartFromZero.cpp
     UseAlgorithm.cpp
+    UseSwap.cpp
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperator.cpp
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperatorMatchers.cpp 
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperatorActions.cpp 

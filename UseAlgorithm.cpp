@@ -132,8 +132,30 @@ TEST( UseAlgorithmsTest, AccumulateTest ) {
     LocalFixture Test(cpp_input,cpp_output);
 }
 
+TEST( UseAlgorithmsTest, AccumulateWithCompoundStatementTest ) {
+    // input for the transformation
+    std::string cpp_input = 
+	"void fun() {\n"
+	"  int ctr = 5;\n"
+	"  int arr[100];\n"
+        "  for( int i = 0; i < 100; i++ ) {\n"
+	"     ctr += arr[i];\n"
+	"  }\n"
+	"}\n"
+    ;
+    // the text that i expect to get after the transformation
+    std::string cpp_output = 
+	"void fun() {\n"
+	"  int ctr = 5;\n"
+	"  int arr[100];\n"
+        "  ctr = std::accumulate(&arr[0], &arr[100], ctr);\n"
+	"}\n"
+    ;
+    LocalFixture Test(cpp_input,cpp_output);
+}
+
 #if 1
-TEST( UseAlgorithmsTest, InsertTest ) {
+TEST( UseAlgorithmsTest, BackInsertTest ) {
     // input for the transformation
     std::string cpp_input = 
 	"#include <vector>\n"
@@ -157,4 +179,28 @@ TEST( UseAlgorithmsTest, InsertTest ) {
     LocalFixture Test(cpp_input,cpp_output);
 }
 
+TEST( UseAlgorithmsTest, FrontInsertTest ) {
+    // input for the transformation
+    std::string cpp_input = 
+	"#include <list>\n"
+	"using namespace std;\n"
+	"void fun() {\n"
+	"  int arr[100];\n"
+	"  list<int> storage;\n"
+        "  for( int i = 0; i < 100; i++ ) storage.push_front( arr[i] );\n"
+	"}\n"
+    ;
+    // the text that i expect to get after the transformation
+    std::string cpp_output = 
+	"#include <list>\n"
+	"using namespace std;\n"
+	"void fun() {\n"
+	"  int arr[100];\n"
+	"  list<int> storage;\n"
+        "  std::copy(&arr[0], &arr[100], std::front_inserter( &storage[0] ));\n"
+	"}\n"
+    ;
+    LocalFixture Test(cpp_input,cpp_output);
+}
 #endif
+
