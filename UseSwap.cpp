@@ -28,7 +28,10 @@ TEST( UseSwapTest, SwapTest ) {
     // the text that i expect to get after the transformation
     std::string cpp_output = 
 	"void fun() {\n"
+	"  int a,b,t;\n"
+	"  ;\n"
 	"  std::swap(a, b);\n"
+	"  ;\n"
 	"}\n"
     ;
     LocalFixture Test(cpp_input,cpp_output);
