@@ -34,6 +34,7 @@ add_extra_unittest( ClangRefactorTests
     ForLoopStartFromZero.cpp
     UseAlgorithm.cpp
     UseSwap.cpp
+    FuseToSimdVector.cpp
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperator.cpp
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperatorMatchers.cpp 
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperatorActions.cpp 

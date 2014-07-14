@@ -11,6 +11,7 @@
 #include "llvm/ADT/SmallString.h"
 #include "llvm/ADT/StringRef.h"
 #include "Core/Transform.h"
+#include <list>
 
 using namespace clang;
 using namespace clang::tooling;
@@ -23,7 +24,8 @@ class Fixture : public BaseClass, MatcherProvider {
     public:
     Fixture( 
 	std::string input, 
-	std::string expected_output 
+	std::string expected_output,
+	std::list<std::string> additional_args = std::list<std::string>()
     ) :
 	BaseClass( TransformOptions() )
     {
@@ -56,6 +58,10 @@ class Fixture : public BaseClass, MatcherProvider {
 
 	std::vector<std::string> Args;
 	Args.push_back("-std=c++1y");
+
+	for( auto element : additional_args ){
+	    Args.push_back( element );
+	}
 
 	EXPECT_EQ( tooling::runToolOnCodeWithArgs(action_factory->create(), input, Args, SourceFile.str()), true );
 
