@@ -35,6 +35,7 @@ add_extra_unittest( ClangRefactorTests
     UseAlgorithm.cpp
     UseSwap.cpp
     FuseToSimdVector.cpp
+    UseFullyQualifiedTypes.cpp
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperator.cpp
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperatorMatchers.cpp 
     #    ../../UseCompoundAssignOperator/UseCompoundAssignOperatorActions.cpp 
